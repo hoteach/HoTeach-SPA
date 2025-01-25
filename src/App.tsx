@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './App.css';
 import {
   createBrowserRouter,
@@ -8,6 +7,7 @@ import {
 } from 'react-router-dom';
 import { RoutePage } from './types';
 import HelloWorld from './pages/hello-world/HelloWorld';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 export const router = createBrowserRouter(
   createRoutesFromChildren(
@@ -19,9 +19,11 @@ export const router = createBrowserRouter(
 
 function App() {
   return (
-    <main className="w-screen h-screen bg-white">
-      <Outlet />
-    </main>
+    <ThemeProvider>
+      <main className="w-screen h-screen bg-white dark:bg-black">
+        <Outlet />
+      </main>
+    </ThemeProvider>
   );
 }
 
